@@ -4,3 +4,4 @@ Correct = 3628 Total = 3735 k = 1 phoc = 2 (quadratic) human/nonhuman
 Correct = 3631 Total = 3735 k = 1 phoc = 3 (quadratic) human/nonhuman
 Correct = 3630 Total = 3735 k = 1 phoc = 4 (quadratic) human/nonhuman
 Correct = 3633 Total = 3735 k = 1 phoc = 5 (quadratic) human/nonhuman
+Correct = 3634 Total = 3735 k = 1 phoc = 6 (quadratic) human/nonhuman

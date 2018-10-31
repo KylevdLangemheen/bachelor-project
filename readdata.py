@@ -1,16 +1,19 @@
+#a class for reading the data from fasta files
+#assumes the following tags: ["name","host","admantane","oseltamivir","increasedvirulence","enhancedtransmission","fasta"]
+
 class readData:
     def __init__(self, location, args = ["name","host","admantane","oseltamivir","increasedvirulence","enhancedtransmission","fasta"]):
         data = open(location,"r")
         lines = data.readlines()
-        dataObject = []
-        for line in lines:
-            line = line[1:]
-            entry = dict()
-            for arg in args:
-                line, part = self.readPart(line)
-                entry[arg] = part
-            dataObject.append(entry)
-        self.dataObject = dataObject
+        dataObject = [] #this is gonna contain all the data
+        for line in lines: #for every line in the lines of the input file
+            line = line[1:] #the first character is always > so redundant
+            entry = dict() #create a new dictionary matchint tag as key with value as value
+            for arg in args: #for every argument arg is a label in args
+                line, part = self.readPart(line) #read the first label called part, and save the rest of the line in line
+                entry[arg] = part #save the first label part under the key called arg
+            dataObject.append(entry) #add that entry to the dataobject
+        self.dataObject = dataObject #set the dataobject to this class
 
     def readPart(self, line):
         part = ""
@@ -123,6 +126,17 @@ class readData:
 
         return (data, labels)
 
+    def dataToSqPhoc(self,data,level):
+        phocs = []
+        for p in data: #for datapoint p in dataset data
+            phoc = []
+            parts = self.makeParts(p,level) #get the parts for phoc
+            parts = [item for sublist in parts for item in sublist] #flatten the array
+            for part in parts: #for each (sub)string part in list of split up strings parts
+                phoc += self.makeHist(part)
+            phocs.append(phoc)
+        return phocs
+
     def dataToPhoc(self,data,level):
         phocs = []
         for p in data: #for datapoint p in dataset data
@@ -145,6 +159,7 @@ class readData:
             hist[v] += 1
         return hist
 
+    #needs to change based on actual phoc, now it's kind of a messy square phoc
     def makeParts(self,p,level):
         parts = [None] * level
         parts[0] = [p]
