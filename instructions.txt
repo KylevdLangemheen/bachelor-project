@@ -1,0 +1,15 @@
+Here's a quick instructions file for running most of the code here.
+
+
+
+1. download the file in the correct format with the correct labels from fludb.org
+
+2. translate the fasta file with translateData, adjust the file so it suits your needs
+
+3. the translated file can be read with readData. Different functions in readData help with different input formats like PHOC of plain fasta
+
+4. to run knn or kmedoids, look at testknn and testkmedoids respectively.
+
+
+
+exploredata is a file for exploring the dataset
