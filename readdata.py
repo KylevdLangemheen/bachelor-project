@@ -1,9 +1,10 @@
 class readData:
-    def __init__(self, location, *args):
+    def __init__(self, location, args = ["name","host","admantane","oseltamivir","increasedvirulence","enhancedtransmission","fasta"]):
         data = open(location,"r")
         lines = data.readlines()
         dataObject = []
         for line in lines:
+            line = line[1:]
             entry = dict()
             for arg in args:
                 line, part = self.readPart(line)
@@ -27,12 +28,18 @@ class readData:
     def cleanName(self):
         for data in self.dataObject:
             if "name" in data:
-                data["name"] = data["name"][1:]
+                data["name"] = data["name"]
 
     def cleanHost(self):
         for data in self.dataObject:
             if "host" in data:
                 data["host"] = data["host"]
+    
+    def cleanHuman(self):
+        for data in self.dataObject:
+            if "host" in data:
+                if not data["host"] == "Human":
+                    data["host"] = "not Human"
 
     def cleanAdmantane(self):
         for data in self.dataObject:
@@ -105,3 +112,53 @@ class readData:
         self.cleanOseltamivir()
         self.cleanVirulence()
         self.cleanTransmission()
+
+    def sepDataLabels(self):
+        data = []
+        labels = []
+
+        for line in self.dataObject:
+            data.append(line.pop("fasta"))
+            labels.append(line)
+
+        return (data, labels)
+
+    def dataToPhoc(self,data,level):
+        phocs = []
+        for p in data: #for datapoint p in dataset data
+            phoc = []
+            parts = self.makeParts(p,level) #get the parts for phoc
+            parts = [item for sublist in parts for item in sublist] #flatten the array
+            for part in parts: #for each (sub)string part in list of split up strings parts
+                phoc += self.makeHist(part)
+            phocs.append(phoc)
+        return phocs
+
+    def makeHist(self,p):
+        hist = [0] * 26
+        for c in p: #for character c in datapoint p
+            v = ord(c) #integer value v of character c
+            v -= 65 #character "A" should be indexed at 0
+            if v < 0 or v > 25: #if value v is outside of alphabet range
+                print("Error: character " + c + " is not an uppercase alphabetical letter.")
+                return -1
+            hist[v] += 1
+        return hist
+
+    def makeParts(self,p,level):
+        parts = [None] * level
+        parts[0] = [p]
+
+        for i in range(1,level):
+            parts[i] = self.splitStrings(parts[i-1])
+
+        return parts
+
+    def splitStrings(self,strings):
+        part = []
+
+        for s in strings: #for string s in strings
+            n = round((len(s)+0.1)/2.0)
+            part += [s[i:i+n] for i in range(0, len(s), n)]
+
+        return part

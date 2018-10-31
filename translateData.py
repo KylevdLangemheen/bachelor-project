@@ -1,6 +1,6 @@
 #translate the supplied data format into preferred format
-sourceName = "HA_complete_some.fasta"        #source file to read
-goalName = "HA_t_complete_some.fasta"        #goal file to write
+sourceName = "HA_complete_human.fasta"        #source file to read
+goalName = "HA_t_complete_human.fasta"        #goal file to write
 
 sourceFile = open(sourceName,"r")
 goalFile = open(goalName,"w")
