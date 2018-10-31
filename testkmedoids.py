@@ -1,5 +1,7 @@
 import kmedoids
 
+#test file for testing kmedoids, never got a lot of use out of it as edit distance takes way too long
+
 dataLocation = "HA_t_complete_all.fasta"
 
 dataFile = open(dataLocation,"r")

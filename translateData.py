@@ -5,6 +5,9 @@ goalName = "HA_t_complete_human.fasta"        #goal file to write
 sourceFile = open(sourceName,"r")
 goalFile = open(goalName,"w")
 
+#translates the fasta file into
+#label1|label2|label3|fastacode\n
+
 nextLabel = True
 FASTA = ""
 for line in sourceFile:
