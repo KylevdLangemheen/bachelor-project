@@ -13,3 +13,9 @@ Here's a quick instructions file for running most of the code here.
 
 
 exploredata is a file for exploring the dataset
+
+results contains test results for running the dataset, as explained in the file
+
+Libraries used:     nltk for the default edit distance distance metric
+                    numpy for maths and random related stuff
+                    scipy for euclidean distance
