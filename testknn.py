@@ -12,7 +12,7 @@ dataobj.cleanHuman()
 print("separating data and labels")
 xfull,yfull = dataobj.sepDataLabels()
 print("translating data to phoc")
-xfull = dataobj.dataToPhoc(xfull,3)
+xfull = dataobj.dataToPhoc(xfull,6)
 
 x = []
 y = []
@@ -22,7 +22,10 @@ trainIndexes = []
 testIndexes = []
 print("separating train and test set")
 for i in range(len(xfull)):
-    if np.random.uniform()>0.02:
+    if np.random.uniform()<0.9:
+        continue
+
+    if np.random.uniform()>0.5:
         x.append(xfull[i])
         y.append(yfull[i])
         trainIndexes.append(i)
@@ -44,12 +47,11 @@ for i in range(tests):
     xi = xt[i]
     yi = yt[i]
     ans = knnobj.predict1(xi)
-    #print("Answer: " + str(ans) + ", actual: " + str(yi))
-    if ans == yi:
+    if ans[0] == yi["host"]:
         correct += 1
     print("Progress " + str((i/tests)*100) + "%", end='\r', flush=True)
 print("test complete")
-print("Accuracy = " + str(correct/tests))
+print("Correct = " + str(correct) + "Total = " + str(tests))
 
 
 '''
