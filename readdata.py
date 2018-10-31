@@ -15,35 +15,43 @@ class readData:
             dataObject.append(entry) #add that entry to the dataobject
         self.dataObject = dataObject #set the dataobject to this class
 
+    #read part of a line, pooping out the first label as part, and the rest of the line as line
+    #only works for the default fasta code, needs to be modified if the fasta file is different
     def readPart(self, line):
         part = ""
         for i in range(len(line)):
             c = line[i]
-            if c == '|':
+            if c == '|': #every label is split with this
                 return (line[i+1:],part)
-            if c == '\n':
+            if c == '\n':#end of fasta code is this
                 return ("",part)
             part += c
     
+    #return dataobject, maybe can just be accessed differently hmmmm.
+    #TODO: maybe remove
     def getData(self):
         return self.dataObject
 
+    #Cleaner function for label: 
     def cleanName(self):
         for data in self.dataObject:
             if "name" in data:
                 data["name"] = data["name"]
 
+    #Cleaner function for label: 
     def cleanHost(self):
         for data in self.dataObject:
             if "host" in data:
                 data["host"] = data["host"]
-    
+
+    #Cleaner function for only human/not human data 
     def cleanHuman(self):
         for data in self.dataObject:
             if "host" in data:
                 if not data["host"] == "Human":
                     data["host"] = "not Human"
 
+    #Cleaner function for label: 
     def cleanAdmantane(self):
         for data in self.dataObject:
             if "admantane" in data:
@@ -59,7 +67,8 @@ class readData:
                     data["admantane"] = -1
                 if not changed:
                     print("Unexpected label in admantane: " + str(data["admantane"]))
-    
+
+    #Cleaner function for label: 
     def cleanOseltamivir(self):
         for data in self.dataObject:
             if "oseltamivir" in data:
@@ -76,6 +85,7 @@ class readData:
                 if not changed:
                     print("Unexpected label in oseltamivir: " + str(data["oseltamivir"]))
 
+    #Cleaner function for label: 
     def cleanVirulence(self):
         for data in self.dataObject:
             if "increasedvirulence" in data:
@@ -92,6 +102,7 @@ class readData:
                 if not changed:
                     print("Unexpected label in increasedvirulence: " + str(data["increasedvirulence"]))
 
+    #Cleaner function for label: 
     def cleanTransmission(self):
         for data in self.dataObject:
             if "enhancedransmission" in data:
@@ -108,6 +119,7 @@ class readData:
                 if not changed:
                     print("Unexpected label in enhancedtransmission: " + str(data["enhancedtransmission"]))
     
+    #use all standard cleaner functions
     def cleanAll(self):
         self.cleanName()
         self.cleanHost()
@@ -116,6 +128,7 @@ class readData:
         self.cleanVirulence()
         self.cleanTransmission()
 
+    #separate data from labels
     def sepDataLabels(self):
         data = []
         labels = []
