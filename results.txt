@@ -2,6 +2,15 @@ Correct = 3641 Total = 3735 k = 5 phoc = 3 (quadratic) human/nonhuman
 Correct = 3622 Total = 3735 k = 1 phoc = 1 (quadratic) human/nonhuman
 Correct = 3628 Total = 3735 k = 1 phoc = 2 (quadratic) human/nonhuman
 Correct = 3631 Total = 3735 k = 1 phoc = 3 (quadratic) human/nonhuman
+Correct = 3529 Total = 3600 k = 1 phoc = 3 (quadratic) human/nonhuman
 Correct = 3630 Total = 3735 k = 1 phoc = 4 (quadratic) human/nonhuman
 Correct = 3633 Total = 3735 k = 1 phoc = 5 (quadratic) human/nonhuman
 Correct = 3634 Total = 3735 k = 1 phoc = 6 (quadratic) human/nonhuman
+Correct = 3531 Total = 3600 k = 1 phoc = 7 (quadratic) human/nonhuman
+
+Correct = 3525 Total = 3600 k = 1 phoc = 1 human/nonhuman
+Correct = 3527 Total = 3600 k = 1 phoc = 2 human/nonhuman
+Correct = 3531 Total = 3600 k = 1 phoc = 3 human/nonhuman
+Correct = 3530 Total = 3600 k = 1 phoc = 4 human/nonhuman
+Correct = 3527 Total = 3600 k = 1 phoc = 5 human/nonhuman
+Correct = 3529 Total = 3600 k = 1 phoc = 6 human/nonhuman
