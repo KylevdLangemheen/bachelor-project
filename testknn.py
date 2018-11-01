@@ -15,7 +15,7 @@ dataobj.cleanHuman()
 print("separating data and labels")
 xfull,yfull = dataobj.sepDataLabels()
 print("translating data to phoc")
-xfull = dataobj.dataToPhoc(xfull,6)
+xfull = dataobj.dataToPhoc(xfull,3,False)
 
 #x and y are training data and training labels, xt and yt are test data and test labels, respectively
 x = []
@@ -43,7 +43,7 @@ for i in range(len(xfull)):
 #print("Test indexes: " + str(testIndexes))
 
 print("training knn")
-knnobj = knn.knn(1,x,y,scipy.spatial.distance.euclidean)
+knnobj = knn.knn(3,x,y,scipy.spatial.distance.euclidean)
 
 print("testing knn")
 correct = 0

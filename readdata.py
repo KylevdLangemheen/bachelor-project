@@ -139,27 +139,28 @@ class readData:
 
         return (data, labels)
 
-    def dataToSqPhoc(self,data,level):
+    def dataToPhoc(self,data,level,square = False):
         phocs = []
-        for p in data: #for datapoint p in dataset data
-            phoc = []
-            parts = self.makeParts(p,level) #get the parts for phoc
-            parts = [item for sublist in parts for item in sublist] #flatten the array
-            for part in parts: #for each (sub)string part in list of split up strings parts
-                phoc += self.makeHist(part)
-            phocs.append(phoc)
+
+        if square: #if a silly squarish phoc is wanted:
+            for p in data: #for datapoint p in dataset data
+                phoc = []
+                parts = self.makeParts(p,level) #get the parts for phoc
+                parts = [item for sublist in parts for item in sublist] #flatten the array
+                for part in parts: #for each (sub)string part in list of split up strings parts
+                    phoc += self.makeHist(part)
+                phocs.append(phoc)
+        else: #normal phoc
+            for p in data:
+                phoc = []
+                for k in range(1,level+1):
+                    n = len(p)
+                    parts = [p[i * (n // k) + min(i, n % k):(i+1) * (n // k) + min(i+1, n % k)] for i in range(k)]
+                    for part in parts:
+                        phoc += self.makeHist(part)
+                phocs.append(phoc)
         return phocs
 
-    def dataToPhoc(self,data,level):
-        phocs = []
-        for p in data: #for datapoint p in dataset data
-            phoc = []
-            parts = self.makeParts(p,level) #get the parts for phoc
-            parts = [item for sublist in parts for item in sublist] #flatten the array
-            for part in parts: #for each (sub)string part in list of split up strings parts
-                phoc += self.makeHist(part)
-            phocs.append(phoc)
-        return phocs
 
     def makeHist(self,p):
         hist = [0] * 26
@@ -172,7 +173,6 @@ class readData:
             hist[v] += 1
         return hist
 
-    #needs to change based on actual phoc, now it's kind of a messy square phoc
     def makeParts(self,p,level):
         parts = [None] * level
         parts[0] = [p]
@@ -189,4 +189,4 @@ class readData:
             n = round((len(s)+0.1)/2.0)
             part += [s[i:i+n] for i in range(0, len(s), n)]
 
-        return part
+        return part 
