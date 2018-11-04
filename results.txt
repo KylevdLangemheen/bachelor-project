@@ -14,3 +14,18 @@ Correct = 3531 Total = 3600 k = 1 phoc = 3 human/nonhuman
 Correct = 3530 Total = 3600 k = 1 phoc = 4 human/nonhuman
 Correct = 3527 Total = 3600 k = 1 phoc = 5 human/nonhuman
 Correct = 3529 Total = 3600 k = 1 phoc = 6 human/nonhuman
+3529 phoc 7
+
+3525 k 2 p 1
+
+Correct = 3525 Total = 3600 k = 3 phoc = 3 human/nonhuman
+Correct = 3513 Total = 3600 k = 3 phoc = 3 human/nonhuman
+
+3505 3600 k7 p7
+
+7158 7343 1 3
+10873 11109 1 3
+32685 33507 1 3 0.1
+57919 59169 1 3 0.2
+50840 51950 1 3 0.3
+68719 70645 1 3 0.05
