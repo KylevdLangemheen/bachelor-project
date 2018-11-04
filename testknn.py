@@ -2,7 +2,7 @@ import knn
 import scipy
 import readdata
 import numpy as np
-np.random.seed(42)
+
 
 #a test file for showing how to test knn, and also for myself to test my own algorithm
 #prints progress
@@ -27,10 +27,10 @@ trainIndexes = []
 testIndexes = []
 print("separating train and test set")
 for i in range(len(xfull)):
-    if np.random.uniform()<0.9: #ignore most of the data hahahaha
+    if np.random.uniform()<0.0: #ignore most of the data hahahaha
         continue
 
-    if np.random.uniform()<0.5: #chance of adding it to training or testing set (randomly)
+    if np.random.uniform()<0.05: #chance of adding it to training or testing set (randomly)
         x.append(xfull[i])
         y.append(yfull[i])
         trainIndexes.append(i)
@@ -43,7 +43,7 @@ for i in range(len(xfull)):
 #print("Test indexes: " + str(testIndexes))
 
 print("training knn")
-knnobj = knn.knn(3,x,y,scipy.spatial.distance.euclidean)
+knnobj = knn.knn(1,x,y,scipy.spatial.distance.euclidean)
 
 print("testing knn")
 correct = 0

@@ -38,11 +38,40 @@ class readData:
             if "name" in data:
                 data["name"] = data["name"]
 
-    #Cleaner function for label: 
+    #Cleaner function for label: (cleans only ducks atm)
     def cleanHost(self):
         for data in self.dataObject:
             if "host" in data:
-                data["host"] = data["host"]
+                if data["host"] == "American_Green_Winged_Teal":
+                    data["host"] = "Green_Winged_Teal"
+                if data["host"] == "American_Widgeon":
+                    data["host"] = "American_Wigeon"
+                if data["host"] == "Green_Winged_Teal_":
+                    data["host"] = "Green_Winged_Teal"
+                if data["host"] == "Blue_Winged_Teal_":
+                    data["host"] = "Blue_Winged_Teal"
+                if data["host"] == "Mallard_Duck":
+                    data["host"] = "Mallard"
+                if data["host"] == "Northern_Shov":
+                    data["host"] = "Northern_Shoveler"
+                if data["host"] == "Shoveler":
+                    data["host"] = "Northern_Shoveler"
+                if data["host"] == "Tufted_Duck_":
+                    data["host"] = "Tufted_Duck"
+                if data["host"] == "Pintail_Duck":
+                    data["host"] = "Pintail"
+                if data["host"] == "Northern_Pintail":
+                    data["host"] = "Pintail"
+                if data["host"] == "Redhead_Duck":
+                    data["host"] = "Redhead"
+                if data["host"] == "Scooter":
+                    data["host"] = "Scoter"
+                if data["host"] == "Wild_Duck":
+                    data["host"] = "Mallard"
+                if data["host"] == "Tufted_Duck_":
+                    data["host"] = "Tufted_Duck"
+                if data["host"] == "Greater_Scaup":
+                    data["host"] = "Scaup"
 
     #Cleaner function for only human/not human data 
     def cleanHuman(self):
