@@ -59,7 +59,7 @@ for item in y:
 
 threshold = 200 #10/25 20/18 30/14 40/12 50/12 60/11 70/10 80/9 90/9 100/9 150/8 200/6
 useable = []
-for host in duck:
+for host in unique:
     if hosts.count(host) >= threshold:
         useable.append(host)
         print("More than or equal to " + str(threshold) + " occurences: " + str(host))
