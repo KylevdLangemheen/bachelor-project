@@ -5,7 +5,7 @@ import numpy as np
 import random
 
 ksetting  = 1
-phoclevel = 7
+phoclevel = 3
 
 #a test file for showing how to test knn, and also for myself to test my own algorithm
 #prints progress
